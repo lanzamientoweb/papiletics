@@ -1,0 +1,508 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Papiletics — Plan de recomposición corporal">
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  PERFIL                      ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="section" id="perfil">
+    <p class="section-title">Perfil</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="val">86 kg</div>
+        <div class="lbl">Peso actual</div>
+      </div>
+      <div class="stat">
+        <div class="val">80 kg</div>
+        <div class="lbl">Objetivo</div>
+      </div>
+      <div class="stat">
+        <div class="val">97–98 cm</div>
+        <div class="lbl">Cintura actual</div>
+      </div>
+      <div class="stat">
+        <div class="val">25.1</div>
+        <div class="lbl">IMC (kg/m²)</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Cálculos base</h4>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td>Edad / Altura</td><td><strong>45 años · 1.85 m</strong></td></tr>
+            <tr><td>BMR estimado (Mifflin-St Jeor)</td><td><strong>~1.796 kcal</strong></td></tr>
+            <tr><td>TDEE (actividad ligera-moderada)</td><td><strong>~2.400 kcal</strong></td></tr>
+            <tr><td>Objetivo calórico diario</td><td><strong>~2.000 kcal</strong></td></tr>
+            <tr><td>Déficit real estimado</td><td><strong>~400 kcal/día</strong></td></tr>
+            <tr><td>Proteína diaria objetivo</td><td><strong>160–175 g (2 g/kg)</strong></td></tr>
+            <tr><td>Tiempo estimado al objetivo</td><td><strong>20–28 semanas</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Pérdida esperada:</strong> 0.5–1 kg de grasa/mes si el déficit es consistente. La cintura es mejor indicador que el peso a corto plazo.
+    </div>
+
+    <div class="card">
+      <h4>Lo que ya tienes correcto</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">✅ <strong>IF 16/8 natural</strong> — no rompas lo que funciona</li>
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">✅ <strong>Sin alcohol ni refrescos</strong> — ventaja de ~300–500 kcal/día</li>
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">✅ <strong>Déficit ligero</strong> — protege el músculo y el metabolismo</li>
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">✅ <strong>Base de proteína alta</strong> — pollo, atún, huevo, whey, yogur griego</li>
+        <li style="padding: 7px 0; font-size: 13px; color: var(--muted);">✅ <strong>Fuerza + HIIT + karate</strong> — más inteligente que solo cardio</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>Suplementación</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">💊 <strong>Creatina:</strong> 3–5 g/día en ayunas. Correcto.</li>
+        <li style="padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">🥛 <strong>Whey:</strong> 20–30 g post-entreno o como snack. Bien integrada.</li>
+        <li style="padding: 7px 0; font-size: 13px; color: var(--muted);">🚫 <strong>Nada más necesario</strong> a este nivel de actividad.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  NUTRICIÓN                   ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="section" id="nutricion">
+    <p class="section-title">Nutrición</p>
+
+    <!-- Presupuesto calórico -->
+    <div class="card" style="margin-bottom: 16px;">
+      <h3>Presupuesto calórico diario</h3>
+      <div class="budget-item">
+        <span class="budget-label">Comida (tupper)</span>
+        <div class="budget-bar"><div class="budget-bar-fill" style="width: 32%"></div></div>
+        <span class="budget-kcal">640 kcal</span>
+      </div>
+      <div class="budget-item">
+        <span class="budget-label">Cena</span>
+        <div class="budget-bar"><div class="budget-bar-fill" style="width: 24%; background: var(--green)"></div></div>
+        <span class="budget-kcal">480 kcal</span>
+      </div>
+      <div class="budget-item">
+        <span class="budget-label">Snack proteico</span>
+        <div class="budget-bar"><div class="budget-bar-fill" style="width: 12%; background: var(--yellow)"></div></div>
+        <span class="budget-kcal">240 kcal</span>
+      </div>
+      <div class="budget-item">
+        <span class="budget-label">Margen errores</span>
+        <div class="budget-bar"><div class="budget-bar-fill" style="width: 32%; background: var(--border)"></div></div>
+        <span class="budget-kcal">640 kcal</span>
+      </div>
+      <div style="border-top: 1px solid var(--border); margin-top: 12px; padding-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 13px; color: var(--muted);">TOTAL DIARIO</span>
+        <span style="font-size: 20px; font-weight: 700; color: var(--accent);">~2.000 kcal</span>
+      </div>
+    </div>
+
+    <!-- Tupper fijo -->
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🍱 Tupper fijo (L–V)</h3>
+        <span class="meal-meta">~600 kcal · ~49 g prot</span>
+      </div>
+      <div class="meal-body">
+        <h4>Pollo con pisto y quinoa</h4>
+        <ul>
+          <li><span>Pechuga de pollo (crudo)</span><span>200 g · 220 kcal · 42 g</span></li>
+          <li><span>Cebolla + pimiento + calabacín</span><span>150 g · 60 kcal</span></li>
+          <li><span>Tomate triturado</span><span>150 ml · 40 kcal</span></li>
+          <li><span>Quinoa en seco (o arroz blanco)</span><span>65 g · 235 kcal · 7 g</span></li>
+          <li><span>Aceite de oliva (cucharita de café)</span><span>5 ml · 45 kcal</span></li>
+        </ul>
+        <div class="callout" style="margin-top: 12px; margin-bottom: 0;">
+          <strong>Logística:</strong> Prepara 5 raciones el domingo. Refrigera 3, congela 2. En 40 minutos tienes la semana resuelta. Los martes cuando preparas el caldo de tus hijas es buen momento.
+        </div>
+      </div>
+    </div>
+
+    <!-- Cenas -->
+    <p style="font-size: 13px; color: var(--muted); margin: 16px 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Cenas rotativas (elige una)</p>
+
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🥪 A — Sándwich proteico</h3>
+        <span class="meal-meta">~440 kcal · 38 g prot</span>
+      </div>
+      <div class="meal-body">
+        <ul>
+          <li><span>Pan de molde integral</span><span>2 rebanadas</span></li>
+          <li><span>Atún al natural</span><span>80 g</span></li>
+          <li><span>Huevo cocido</span><span>1 ud</span></li>
+          <li><span>Aguacate</span><span>½ ud</span></li>
+          <li><span>Salsa yogur desnatado + mostaza + pepinillos</span><span>al gusto</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🐟 B — Salmón + brócoli</h3>
+        <span class="meal-meta">~310 kcal · 32 g prot</span>
+      </div>
+      <div class="meal-body">
+        <ul>
+          <li><span>Salmón a la plancha</span><span>150 g</span></li>
+          <li><span>Brócoli al vapor / plancha</span><span>200 g</span></li>
+        </ul>
+        <div class="callout" style="margin-top: 10px; margin-bottom: 0;">
+          Noche ligera — usar cuando la comida fue más calórica.
+        </div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🫘 C — Ensalada de legumbres</h3>
+        <span class="meal-meta">~460 kcal · 32 g prot</span>
+      </div>
+      <div class="meal-body">
+        <ul>
+          <li><span>Garbanzos/lentejas (escurrido)</span><span>200 g</span></li>
+          <li><span>Atún al natural</span><span>80 g</span></li>
+          <li><span>Verdura (tomate, pimiento, cebolla)</span><span>al gusto</span></li>
+          <li><span>Queso feta</span><span>20 g</span></li>
+          <li><span>Aceite de oliva + vinagre</span><span>1 cuch. café</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🥚 D — ½ tortilla de patatas</h3>
+        <span class="meal-meta">~470 kcal · 22 g prot</span>
+      </div>
+      <div class="meal-body">
+        <ul>
+          <li><span>Patata al microondas</span><span>350 g <span class="badge badge-yellow">no 500–600</span></span></li>
+          <li><span>Huevos</span><span>3 uds</span></li>
+          <li><span>Aceite en spray</span><span>máx. 1 cuch. café</span></li>
+        </ul>
+        <div class="callout warning" style="margin-top: 10px; margin-bottom: 0;">
+          Reduce la patata: de 550 g a 350 g = <strong>~160 kcal menos</strong>.
+        </div>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div class="meal-header">
+        <h3>🥣 E — Bowl proteico</h3>
+        <span class="meal-meta">~260 kcal · 38 g prot</span>
+      </div>
+      <div class="meal-body">
+        <ul>
+          <li><span>Yogur griego desnatado</span><span>125 g</span></li>
+          <li><span>Whey proteína</span><span>30 g</span></li>
+          <li><span>Leche semidesnatada</span><span>100 ml</span></li>
+          <li><span>Arándanos / frutos rojos congelados</span><span>80 g</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Snacks -->
+    <p style="font-size: 13px; color: var(--muted); margin: 16px 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Snack / post-entrenamiento</p>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h3 style="margin: 0;">Batido simple</h3>
+        <span class="badge badge-accent">120 kcal · 25 g prot</span>
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">30 g whey + 350 ml agua</p>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h3 style="margin: 0;">Bowl proteico merienda</h3>
+        <span class="badge badge-green">~220 kcal · 32 g prot</span>
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Yogur griego 125 g + 20 g whey + frutos rojos + 100 ml leche</p>
+    </div>
+
+    <!-- Fruta -->
+    <div class="callout">
+      🍊 <strong>Fruta:</strong> 2 piezas/día está perfecto (mandarina, kiwi, melocotón, sandía en verano) — ~100 kcal. No hay que eliminarla.
+    </div>
+
+    <!-- Fines de semana -->
+    <p style="font-size: 13px; color: var(--muted); margin: 16px 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Fines de semana</p>
+
+    <div class="card">
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">🍽️ <strong>Si comes fuera al mediodía:</strong> cena B o E esa noche, sin negociar.</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted);">🥘 <strong>Paella del sábado</strong> (100 g arroz para dos): bien. No toques esa receta.</li>
+        <li style="padding: 8px 0; font-size: 13px; color: var(--muted);">🍔 <strong>Domingos fuera / burger:</strong> 1 burger con queso + salsa yogur. Está dentro del plan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  ENTRENAMIENTO               ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="section" id="entreno">
+    <p class="section-title">Entrenamiento</p>
+
+    <!-- Estado actual -->
+    <div class="card" style="margin-bottom: 16px;">
+      <h4>Estado actual</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capacidad</th><th>Nivel</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Empuje (push)</td><td><span class="badge badge-green">Muy bueno</span></td></tr>
+            <tr><td>Tirón (pull)</td><td><span class="badge badge-red">Déficit</span></td></tr>
+            <tr><td>Piernas / Core</td><td><span class="badge badge-yellow">Suficiente</span></td></tr>
+            <tr><td>Cardio</td><td><span class="badge badge-yellow">Suficiente</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout danger" style="margin-top: 12px; margin-bottom: 0;">
+        <strong>⚠️ Problema principal:</strong> desequilibrio push/pull. Los pull-ups que planeas añadir son exactamente la corrección correcta. Sin trabajo de tracción, el hombro se resiente a largo plazo — especialmente crítico para karate.
+      </div>
+    </div>
+
+    <!-- Calentamiento -->
+    <div class="card" style="margin-bottom: 16px;">
+      <h3>🔥 Calentamiento (5 min)</h3>
+      <ul class="warmup-list">
+        <li><span>Shoulder taps en pike con talones elevados</span><span class="duration">40 s</span></li>
+        <li><span>Descanso</span><span class="duration">20 s</span></li>
+        <li><span>Snow reverse angel</span><span class="duration">40 s</span></li>
+        <li><span>Descanso</span><span class="duration">20 s</span></li>
+        <li><span>Glute bridge</span><span class="duration">40 s</span></li>
+        <li><span>Descanso</span><span class="duration">20 s</span></li>
+        <li><span>Side plank sin tocar rodillas</span><span class="duration">5 reps/lado</span></li>
+        <li><span>Descanso</span><span class="duration">20 s</span></li>
+        <li><span>Hollow body hold</span><span class="duration">40 s</span></li>
+      </ul>
+    </div>
+
+    <!-- Bloque fuerza -->
+    <p style="font-size: 13px; color: var(--muted); margin: 0 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Bloque de fuerza (L–V)</p>
+
+    <div class="exercise-card">
+      <h3>🎯 Pull-ups (dominadas) — PRIORIDAD 1</h3>
+      <ul>
+        <li>4–5 series al fallo (AMRAP)</li>
+        <li>Descanso 90 s entre series</li>
+        <li>Ir al fallo real — no series cortas con descanso largo</li>
+        <li>Si no llegas a 3 reps limpias → <strong>dominadas negativas</strong> (sube con impulso, baja en 4–5 s)</li>
+        <li>Progresión: cuando hagas 3 series de 8+ → añade lastre (mochila)</li>
+      </ul>
+    </div>
+
+    <div class="exercise-card">
+      <h3>💥 Pushups</h3>
+      <ul>
+        <li>Al volver de vacaciones: 3–4 series (no las 100 del verano)</li>
+        <li>Calidad > volumen cuando añades el trabajo de pull</li>
+        <li>Suma 1 rep a la primera serie cada 2 semanas</li>
+      </ul>
+    </div>
+
+    <div class="exercise-card">
+      <h3>🌳 Parque de calistenia</h3>
+      <ul>
+        <li>Dips en paralelas — complemento excelente al push</li>
+        <li>Dominadas australianas — tirón horizontal que falta en casa</li>
+        <li>Pino en pared 30 s — hombros y propiocepción (útil en kata)</li>
+        <li>Muscle-up negatives — objetivo a medio plazo</li>
+      </ul>
+    </div>
+
+    <!-- HIIT -->
+    <p style="font-size: 13px; color: var(--muted); margin: 16px 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">HIIT quemagrasas</p>
+
+    <div class="callout" style="margin-bottom: 12px;">
+      Con karate 4 días/semana: <strong>2 días HIIT completo + fuerza</strong> · <strong>2 días solo fuerza</strong>
+    </div>
+
+    <div class="exercise-card">
+      <h3>⚡ Circuito HIIT (45 s cada uno)</h3>
+      <ul>
+        <li>Jumping jacks</li>
+        <li>Burpee no-jump <em>(objetivo: 15 reps/ronda)</em></li>
+        <li>Rodillas a codos en plancha alta</li>
+        <li>Rodilla a codo mismo lado en plancha baja</li>
+        <li>Patadas de rana sentado</li>
+        <li>Elevaciones de rodilla</li>
+        <li>Sentadilla + lunge con salto</li>
+        <li>In and outs en plancha</li>
+      </ul>
+    </div>
+
+    <!-- Karate -->
+    <div class="exercise-card">
+      <h3>🥋 Karate</h3>
+      <ul>
+        <li>4 sesiones/semana — suficiente como base de actividad</li>
+        <li>Lunes y miércoles (solo): añade bloque de fuerza antes o después</li>
+        <li>Martes y jueves (con tus hijas): actividad moderada, no cuenta como fuerza</li>
+      </ul>
+    </div>
+
+    <!-- Escaleras -->
+    <div class="callout">
+      🏠 <strong>Escaleras:</strong> 2–3 veces/día en 4º piso = 10–15 min de cardio bajo + ~80–100 kcal extra sin esfuerzo adicional.
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  SABOTEADORES                ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="section" id="saboteadores">
+    <p class="section-title">Saboteadores</p>
+
+    <p style="font-size: 13px; color: var(--muted); margin: 0 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Los que ya conocías</p>
+
+    <div class="saboteador">
+      <h3>🍗 Picar mientras cocinas</h3>
+      <p class="damage">⚡ 100–300 kcal los días que cocinas</p>
+      <p class="fix">Ten pepino/zanahoria en rodajas delante. O chicle sin azúcar. Si llegas con hambre, tómate el batido 30 min antes de cocinar.</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>😤 Llegar con hambre al mediodía (efecto ayuno)</h3>
+      <p class="damage">⚡ El hambre extrema lleva a raciones más grandes y a repetir</p>
+      <p class="fix">Batido de whey 30 min antes si sabes que vas a cocinar con hambre. Corta el hambre sin romper el déficit.</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>📅 Fines de semana sin estructura</h3>
+      <p class="damage">⚡ Pueden anular el déficit de 3–4 días de semana</p>
+      <p class="fix">Regla fija (ver sección Nutrición). No restricción, solo compensación automática.</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>🧀 Queso curado</h3>
+      <p class="damage">⚡ 30 g = ~120 kcal. Fácil de picar sin darse cuenta</p>
+      <p class="fix">Si entra en casa, porciónalo en bolsitas de 30 g el mismo día que lo abres.</p>
+    </div>
+
+    <p style="font-size: 13px; color: var(--muted); margin: 20px 0 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px;">Los que probablemente no calculabas</p>
+
+    <div class="saboteador">
+      <h3>🫒 Aceite de oliva sin medir ⚠️</h3>
+      <p class="damage">⚡ 1 cuchara sopera = 120 kcal. Si entra en 2–3 momentos del día sin medir → 300–400 kcal invisibles</p>
+      <p class="fix">Usa spray de aceite para cocinar. Sin spray → mide con cucharita de café (5 ml = 45 kcal).</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>🍲 3 platos de lentejas "sin chorizo"</h3>
+      <p class="damage">⚡ 1 plato = ~260 kcal · Tres platos = ~780 kcal solo de legumbre</p>
+      <p class="fix">Máximo 2 platos. El segundo, más pequeño que el primero.</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>🍳 Porciones de tortilla sin pesarla</h3>
+      <p class="damage">⚡ 150 g = ~250 kcal · Una porción "generosa" de 250 g = ~420 kcal</p>
+      <p class="fix">Cuando la prepares, córtala en 4–5 porciones iguales y guarda las que no son para esa noche.</p>
+    </div>
+
+    <div class="saboteador">
+      <h3>🧀 Picar mozzarella montando la lasaña</h3>
+      <p class="damage">⚡ 30–50 g = ~100–150 kcal. Suma silenciosamente</p>
+      <p class="fix">Pesa los 200 g y ponlos directamente sobre la fuente antes de empezar a montar.</p>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  SEGUIMIENTO                 ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="section" id="seguimiento">
+    <p class="section-title">Seguimiento</p>
+
+    <!-- Métricas -->
+    <div class="metric-grid" style="margin-bottom: 16px;">
+      <div class="metric-card">
+        <div class="icon">⚖️</div>
+        <h4>Peso</h4>
+        <div class="freq">Cada lunes</div>
+        <p>En ayunas, tras ir al baño</p>
+      </div>
+      <div class="metric-card">
+        <div class="icon">📏</div>
+        <h4>Cintura</h4>
+        <div class="freq">Cada 2 semanas</div>
+        <p>Mañana, zona más ancha</p>
+      </div>
+      <div class="metric-card">
+        <div class="icon">💪</div>
+        <h4>Pull-ups</h4>
+        <div class="freq">Cada sesión</div>
+        <p>Progresión de fuerza real</p>
+      </div>
+      <div class="metric-card">
+        <div class="icon">📸</div>
+        <h4>Foto</h4>
+        <div class="freq">Mensual</div>
+        <p>Mañana, mismo ángulo</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-bottom: 16px;">
+      No necesitas app de calorías si sigues el tupper fijo + cenas del plan. Si una semana no baja nada, pásate <strong>3 días registrando</strong> para identificar el fallo concreto.
+    </div>
+
+    <!-- Hitos por cintura -->
+    <div class="card">
+      <h3>Hitos por cintura</h3>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div>
+          <h4>95 cm · <span style="color: var(--muted); font-size: 13px;">4–6 semanas</span></h4>
+          <p>Primera señal real de pérdida de grasa visceral</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div>
+          <h4>93 cm · <span style="color: var(--muted); font-size: 13px;">8–12 semanas</span></h4>
+          <p>Empieza a notarse en ropa y espejo</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div>
+          <h4>90 cm · <span style="color: var(--muted); font-size: 13px;">16–22 semanas</span></h4>
+          <p>Más ligero y ágil en kumite y kata</p>
+        </div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-dot"></div>
+        <div>
+          <h4>87 cm · <span style="color: var(--muted); font-size: 13px;">largo plazo</span></h4>
+          <p>Definición visible sostenida</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reglas simples -->
+    <div class="card" style="margin-top: 16px;">
+      <h3 style="margin-bottom: 12px;">5 reglas cuando no recuerdes nada más</h3>
+      <ol class="rules-list">
+        <li>Tupper fijo de lunes a viernes. No improvises la comida principal.</li>
+        <li>Mide el aceite siempre. Cucharita de café, no cuchara sopera.</li>
+        <li>Si el sábado comes fuera: cena E esa noche. Sin negociar.</li>
+        <li>Los pull-ups son la prioridad número uno en el entrenamiento.</li>
+        <li>La báscula puede subir aunque lo hagas bien. Fíate de la cintura y las fotos.</li>
+      </ol>
+    </div>
+
+    <p style="font-size: 11px; color: var(--muted); text-align: center; margin-top: 20px; padding-bottom: 8px;">
+      Plan generado con Claude · Actualizado julio 2026
+    </p>
+  </section>
+
+</Layout>

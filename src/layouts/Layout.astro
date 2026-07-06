@@ -1,0 +1,490 @@
+---
+interface Props {
+  title?: string;
+  section?: string;
+}
+const { title = 'Papiletics', section = '' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plan personal de fitness y nutrición" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f1117;
+      --surface:  #1a1d27;
+      --surface2: #22263a;
+      --border:   #2e3347;
+      --accent:   #6c63ff;
+      --accent2:  #ff6584;
+      --green:    #43e97b;
+      --yellow:   #f9c74f;
+      --text:     #e8eaf6;
+      --muted:    #8b92b8;
+      --radius:   12px;
+      --nav-h:    64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding-bottom: calc(var(--nav-h) + 16px);
+    }
+
+    /* Header */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header .logo { font-size: 20px; }
+    .site-header h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .site-header p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* Bottom nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      z-index: 100;
+    }
+    .bottom-nav a {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.15s;
+      padding: 6px 4px;
+    }
+    .bottom-nav a .icon { font-size: 20px; line-height: 1; }
+    .bottom-nav a.active,
+    .bottom-nav a:hover { color: var(--accent); }
+
+    /* Main content */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* Sections */
+    .section {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .card:last-child { margin-bottom: 0; }
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    td {
+      padding: 8px 10px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+    }
+    tr:hover td { background: var(--surface2); }
+    td strong { color: var(--accent); }
+
+    /* Stats row */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      text-align: center;
+    }
+    .stat .val {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .stat .lbl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* Badges / pills */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-green  { background: rgba(67,233,123,.15); color: var(--green); }
+    .badge-yellow { background: rgba(249,199,79,.15); color: var(--yellow); }
+    .badge-red    { background: rgba(255,101,132,.15); color: var(--accent2); }
+    .badge-accent { background: rgba(108,99,255,.15); color: var(--accent); }
+
+    /* Meal cards */
+    .meal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .meal-card:last-child { margin-bottom: 0; }
+    .meal-header {
+      background: var(--surface2);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .meal-header h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .meal-meta { font-size: 12px; color: var(--green); font-weight: 600; }
+    .meal-body { padding: 14px 16px; }
+    .meal-body ul {
+      list-style: none;
+      padding: 0;
+    }
+    .meal-body li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+    .meal-body li:last-child { border-bottom: none; }
+    .meal-body li span { color: var(--text); }
+
+    /* Callout */
+    .callout {
+      background: rgba(108,99,255,.1);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 12px 0;
+    }
+    .callout strong { color: var(--text); }
+    .callout.warning {
+      background: rgba(249,199,79,.08);
+      border-color: var(--yellow);
+    }
+    .callout.danger {
+      background: rgba(255,101,132,.08);
+      border-color: var(--accent2);
+    }
+
+    /* Rules list */
+    .rules-list {
+      list-style: none;
+      counter-reset: rules;
+    }
+    .rules-list li {
+      counter-increment: rules;
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .rules-list li:last-child { border-bottom: none; }
+    .rules-list li::before {
+      content: counter(rules);
+      min-width: 26px; height: 26px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Exercise cards */
+    .exercise-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .exercise-card:last-child { margin-bottom: 0; }
+    .exercise-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .exercise-card p, .exercise-card li {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .exercise-card ul { padding-left: 16px; }
+
+    /* Progress milestones */
+    .milestone {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .milestone:last-child { border-bottom: none; }
+    .milestone-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .milestone h4 { font-size: 15px; font-weight: 700; color: var(--accent); }
+    .milestone p { font-size: 13px; color: var(--muted); }
+
+    /* Saboteadores */
+    .saboteador {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .saboteador:last-child { margin-bottom: 0; }
+    .saboteador h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .saboteador .damage {
+      font-size: 12px;
+      color: var(--accent2);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .saboteador .fix {
+      font-size: 13px;
+      color: var(--green);
+      padding-top: 6px;
+      border-top: 1px solid var(--border);
+      margin-top: 6px;
+    }
+    .saboteador .fix::before { content: "✓ "; font-weight: 700; }
+
+    /* Budget bars */
+    .budget-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .budget-item:last-child { margin-bottom: 0; }
+    .budget-label { font-size: 13px; color: var(--muted); min-width: 130px; }
+    .budget-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .budget-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+    .budget-kcal { font-size: 13px; font-weight: 600; color: var(--text); min-width: 60px; text-align: right; }
+
+    /* Warmup steps */
+    .warmup-list { list-style: none; }
+    .warmup-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .warmup-list li:last-child { border-bottom: none; }
+    .warmup-list li .duration { color: var(--accent); font-weight: 600; font-size: 12px; }
+
+    /* Metric cards */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .metric-card .icon { font-size: 22px; margin-bottom: 6px; }
+    .metric-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .metric-card .freq { font-size: 11px; color: var(--accent); font-weight: 600; }
+    .metric-card p { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* Print / util */
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 600; }
+    em { color: var(--yellow); font-style: normal; }
+
+    /* Scrollspy active state via URL hash */
+    :target { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <span class="logo">🥋</span>
+    <div>
+      <h1>Papiletics</h1>
+      <p>Plan de recomposición corporal · Julio 2026</p>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="#perfil" class={section === 'perfil' ? 'active' : ''}>
+      <span class="icon">👤</span>
+      Perfil
+    </a>
+    <a href="#nutricion" class={section === 'nutricion' ? 'active' : ''}>
+      <span class="icon">🥗</span>
+      Nutrición
+    </a>
+    <a href="#entreno" class={section === 'entreno' ? 'active' : ''}>
+      <span class="icon">💪</span>
+      Entreno
+    </a>
+    <a href="#saboteadores" class={section === 'saboteadores' ? 'active' : ''}>
+      <span class="icon">⚠️</span>
+      Trampas
+    </a>
+    <a href="#seguimiento" class={section === 'seguimiento' ? 'active' : ''}>
+      <span class="icon">📊</span>
+      Seguimiento
+    </a>
+  </nav>
+
+  <script>
+    // Scrollspy: activa el enlace del nav según la sección visible
+    const links = document.querySelectorAll('.bottom-nav a');
+    const sections = document.querySelectorAll('.section[id]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.bottom-nav a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
